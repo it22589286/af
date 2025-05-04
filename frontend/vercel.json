@@ -5,14 +5,36 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist",
+        "buildCommand": "npm run build"
       }
     }
   ],
   "routes": [
     {
+      "src": "/assets/(.*)",
+      "headers": {
+        "Content-Type": "application/javascript"
+      },
+      "continue": true
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "headers": [
+    {
+      "source": "/(.*).js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "VITE_API_URL": "https://af-backend-nine.vercel.app/api"
+  }
 } 
