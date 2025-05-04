@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
-import { API_URL } from '../config';
 
 const UserProfile = () => {
   const { user, logout, updateUser } = useAuth();
@@ -38,7 +37,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/user/profile`);
+        const response = await axios.get('http://localhost:5000/api/user/profile');
         setProfile({
           username: response.data.username,
           email: response.data.email

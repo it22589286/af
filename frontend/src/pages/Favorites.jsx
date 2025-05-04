@@ -5,7 +5,6 @@ import { Typography, Box, Container, CircularProgress } from '@mui/material';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { API_URL } from '../config';
 
 const Favorites = () => {
   const { user } = useAuth();
@@ -18,7 +17,7 @@ const Favorites = () => {
       if (user) {
         try {
           // First get the favorite country codes
-          const response = await axios.get(`${API_URL}/api/user/favorites`);
+          const response = await axios.get('http://localhost:5000/api/user/favorites');
           const favoriteCodes = response.data;
 
           // Then fetch complete country data for each favorite

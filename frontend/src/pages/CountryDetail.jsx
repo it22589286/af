@@ -12,7 +12,6 @@ import { useAuth } from '../context/AuthContext';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import axios from 'axios';
-import { API_URL } from '../config';
 
 /**
  * CountryDetail Component
@@ -34,7 +33,7 @@ const CountryDetail = () => {
     const fetchFavorites = async () => {
       if (user) {
         try {
-          const response = await axios.get(`${API_URL}/api/user/favorites`);
+          const response = await axios.get('http://localhost:5000/api/user/favorites');
           setFavorites(response.data);
           setIsFavorite(response.data.includes(code));
         } catch (error) {
@@ -51,10 +50,10 @@ const CountryDetail = () => {
 
     try {
       if (isFavorite) {
-        await axios.delete(`${API_URL}/api/user/favorites/${code}`);
+        await axios.delete(`http://localhost:5000/api/user/favorites/${code}`);
         setFavorites(favorites.filter(fav => fav !== code));
       } else {
-        await axios.post(`${API_URL}/api/user/favorites`, { countryCode: code });
+        await axios.post('http://localhost:5000/api/user/favorites', { countryCode: code });
         setFavorites([...favorites, code]);
       }
       setIsFavorite(!isFavorite);

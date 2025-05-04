@@ -69,7 +69,7 @@ const Navbar = () => {
       <div className="py-6 px-4 border-b border-gray-800">
         <Link to={user ? "/home" : "/"} className="flex items-center space-x-2 text-xl font-bold text-gray-100">
           <PublicIcon className="text-gray-300" />
-          <span>Country Explorer</span>
+          <span>GeoWise</span>
         </Link>
       </div>
       {navLinks.map((link) => (
@@ -126,7 +126,7 @@ const Navbar = () => {
         >
           <Link to={user ? "/home" : "/"} className="flex items-center space-x-2 text-2xl font-bold text-white hover:text-gray-200 transition-colors duration-300">
             <PublicIcon className="text-3xl text-white" />
-            <span className="tracking-wide">Country Explorer</span>
+            <span className="tracking-wide">GeoWise</span>
           </Link>
         </motion.div>
         
